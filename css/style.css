@@ -1,0 +1,34 @@
+/*
+Style for GP Back To Top
+*/
+
+.gpbttb-form {
+	width: 360px;
+    margin: 20px 0;
+    padding-top: 15px;
+    border: 1px solid #cdcdcd;
+}
+
+.gp-back-to-top {
+	display: block !important;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	padding: 5px;
+	background-color: #111f1c;
+	color: #ffffff;
+	text-align: center;
+	position: relative !important;
+	bottom: inherit !important;
+	right: inherit !important;
+	font-size: 14px;
+}
+.gp-back-to-top span {
+	position: absolute;
+	top:24%;
+	-webkit-transform: translateX(-50%);
+	   -moz-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	     -o-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}

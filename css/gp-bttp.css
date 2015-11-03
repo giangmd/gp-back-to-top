@@ -1,0 +1,30 @@
+/*
+					 * Style GP Back To Top Plugin
+					 *
+					 * @author Giang Peter
+					 */
+					.gp-back-to-top {
+						display: none;
+						width: 30px;
+						height: 30px;
+						border-radius: 50%;
+						padding: 5px;
+						background-color: #111f1c;
+						color: #ffffff;
+						text-align: center;
+						position: fixed;
+						z-index: 99999;
+						bottom: 45px;
+						right: 20px;
+						font-size: 14px;
+						cursor: pointer;
+					}
+					.gp-back-to-top span {
+						position: absolute;
+						top: 24%;
+						-webkit-transform: translateX(-50%);
+						-moz-transform: translateX(-50%);
+						-ms-transform: translateX(-50%);
+						-o-transform: translateX(-50%);
+						transform: translateX(-50%);
+					}
