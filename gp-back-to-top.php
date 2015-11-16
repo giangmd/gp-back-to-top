@@ -48,10 +48,11 @@ class GP_Back_To_Top
 	}
 
 	public function gp_bttb_enqueue_admin_scripts() {
-		wp_enqueue_style( 'bootstrap', plugins_url( '/lib/bootstrap-3.3.4/css/bootstrap.min.css', __FILE__ ), array(), '3.3.4' );
-		wp_enqueue_style( 'style', plugins_url( '/css/style.css', __FILE__ ), array(), self::VERSION );
+		wp_enqueue_style( 'gp_bttb_admin_bootstrap', plugins_url( '/lib/bootstrap-3.3.4/css/bootstrap.min.css', __FILE__ ), array(), '3.3.4' );
+		wp_enqueue_style( 'gp_bttb_admin_style', plugins_url( '/css/style.css', __FILE__ ), array(), self::VERSION );
 
-		$file_ad = filesize( dirname(__FILE__) . '\css\/'.$this->ad_file.'.css' );
+		$ad_file_p = dirname(__FILE__) . '/css/'.$this->ad_file.'.css';
+		$file_ad = filesize( $ad_file_p );
 		if ( $file_ad > 0 ) {
 			wp_enqueue_style( 'style-modified', plugins_url( '/css/'.$this->ad_file.'.css', __FILE__ ), array(), self::VERSION );
 		}
@@ -61,7 +62,8 @@ class GP_Back_To_Top
 	}
 
 	public function gp_bttp_enqueue_scripts() {
-		wp_register_style( 'bootstrap', plugins_url( '/lib/bootstrap-3.3.4/css/bootstrap.min.css', __FILE__ ), array(), '3.3.4' );
+		wp_register_style( 'gp_bttb_fo_bootstrap', plugins_url( '/lib/bootstrap-3.3.4/css/bootstrap.min.css', __FILE__ ), array(), '3.3.4' );
+		wp_enqueue_style( 'gp_bttb_fo_bootstrap' );
 		wp_register_style( 'gp-bttp-style', plugins_url( '/css/'.$this->fr_file.'.css', __FILE__ ), array(), self::VERSION );
     	wp_enqueue_style( 'gp-bttp-style' );
 
@@ -168,15 +170,15 @@ class GP_Back_To_Top
 			</script>
 		</div>
 	<?php
-		if ( $_POST['gp_bttb_up'] ) {
+		if ( isset($_POST['gp_bttb_up']) ) {
 
-			$width = ( !empty($_POST['width']) ) ? $_POST['width'] : $this->d_w;
-			$height = ( !empty($_POST['height']) ) ? $_POST['height'] : $this->d_h;
-			$font = ( !empty($_POST['font']) ) ? $_POST['font'] : $this->d_fz;
-			$bg_color = ( !empty($_POST['bg_color']) ) ? $_POST['bg_color'] : $this->d_bgr;
-			$color = ( !empty($_POST['color']) ) ? $_POST['color'] : $this->d_cl;
-			$bottom = ( !empty($_POST['bottom']) ) ? $_POST['bottom'] : $this->d_bt;
-			$right = ( !empty($_POST['right']) ) ? $_POST['right'] : $this->d_rt;
+			$width = ( !empty($_POST['width']) ) ? (int) strip_tags( trim($_POST['width']) ) : $this->d_w;
+			$height = ( !empty($_POST['height']) ) ? (int) strip_tags( trim($_POST['height']) ) : $this->d_h;
+			$font = ( !empty($_POST['font']) ) ? (int) strip_tags( trim($_POST['font']) ) : $this->d_fz;
+			$bg_color = ( !empty($_POST['bg_color']) ) ? strip_tags( trim($_POST['bg_color']) ) : $this->d_bgr;
+			$color = ( !empty($_POST['color']) ) ? strip_tags( trim($_POST['color']) ) : $this->d_cl;
+			$bottom = ( !empty($_POST['bottom']) ) ? (int) strip_tags( trim($_POST['bottom']) ) : $this->d_bt;
+			$right = ( !empty($_POST['right']) ) ? (int) strip_tags( trim($_POST['right']) ) : $this->d_rt;
 
 			$txt = "/*
 					 * Style GP Back To Top Plugin
