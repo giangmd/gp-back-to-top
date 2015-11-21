@@ -29,9 +29,9 @@ class GP_Back_To_Top
 	{
 		$this->fr_file = 'gp-bttp';
 		$this->ad_file = 'gp-admin';
-		$this->d_w = 30;
-		$this->d_h = 30;
-		$this->d_fz = 14;
+		$this->d_w = 35;
+		$this->d_h = 35;
+		$this->d_fz = 20;
 		$this->d_bgr = '#111f1c';
 		$this->d_cl = '#ffffff';
 		$this->d_pd = 5;
@@ -48,7 +48,6 @@ class GP_Back_To_Top
 	}
 
 	public function gp_bttb_enqueue_admin_scripts() {
-		wp_enqueue_style( 'gp_bttb_admin_bootstrap', plugins_url( '/lib/bootstrap-3.3.4/css/bootstrap.min.css', __FILE__ ), array(), '3.3.4' );
 		wp_enqueue_style( 'gp_bttb_admin_style', plugins_url( '/css/style.css', __FILE__ ), array(), self::VERSION );
 
 		$ad_file_p = dirname(__FILE__) . '/css/'.$this->ad_file.'.css';
@@ -62,8 +61,6 @@ class GP_Back_To_Top
 	}
 
 	public function gp_bttp_enqueue_scripts() {
-		wp_register_style( 'gp_bttb_fo_bootstrap', plugins_url( '/lib/bootstrap-3.3.4/css/bootstrap.min.css', __FILE__ ), array(), '3.3.4' );
-		wp_enqueue_style( 'gp_bttb_fo_bootstrap' );
 		wp_register_style( 'gp-bttp-style', plugins_url( '/css/'.$this->fr_file.'.css', __FILE__ ), array(), self::VERSION );
     	wp_enqueue_style( 'gp-bttp-style' );
 
@@ -78,59 +75,41 @@ class GP_Back_To_Top
 	?>
 		<div class="wrap">
 			<h2>GP Back To Top Plugin</h2>
-			<form action="" method="POST" class="form-horizontal gpbttb-form">
+			<form action="" method="POST" class="gpbttb-form">
 				<div class="form-group">
-					<label for="width" class="col-sm-5 control-label">Width: </label>
-					<div class="col-sm-5">
-						<input type="number" min="1" max="100" name="width" id="width" class="form-control" value="<?php echo $this->d_w; ?>">
-					</div>
+					<label for="width">Width: </label>
+					<input type="number" min="1" max="100" name="width" id="width" value="<?php echo $this->d_w; ?>">
 				</div>
 				<div class="form-group">
-					<label for="height" class="col-sm-5 control-label">Height: </label>
-					<div class="col-sm-5">
-						<input type="number" min="1" max="100" name="height" id="height" class="form-control" value="<?php echo $this->d_h; ?>">
-					</div>
+					<label for="height">Height: </label>
+					<input type="number" min="1" max="100" name="height" id="height" value="<?php echo $this->d_h; ?>">
 				</div>
 				<div class="form-group">
-					<label for="font" class="col-sm-5 control-label">Font-size: </label>
-					<div class="col-sm-5">
-						<input type="number" min="1" max="100" name="font" id="font" class="form-control" value="<?php echo $this->d_fz; ?>">
-					</div>
+					<label for="font">Font-size: </label>
+					<input type="number" min="1" max="100" name="font" id="font" value="<?php echo $this->d_fz; ?>">
 				</div>
 				<div class="form-group">
-					<label for="bg_color" class="col-sm-5 control-label">Background color: </label>
-					<div class="col-sm-5">
-						<input type="color" name="bg_color" id="bg_color" class="form-control" value="<?php echo $this->d_bgr; ?>">
-					</div>
+					<label for="bg_color">Background color: </label>
+					<input type="color" name="bg_color" id="bg_color" value="<?php echo $this->d_bgr; ?>">
 				</div>
 				<div class="form-group">
-					<label for="color" class="col-sm-5 control-label">Color: </label>
-					<div class="col-sm-5">
-						<input type="color" name="color" id="color" class="form-control" value="<?php echo $this->d_cl; ?>">
-					</div>
+					<label for="color">Color: </label>
+					<input type="color" name="color" id="color" value="<?php echo $this->d_cl; ?>">
 				</div>
 				<div class="form-group">
-					<label for="bottom" class="col-sm-5 control-label">Bottom: </label>
-					<div class="col-sm-5">
-						<input type="number" min="1" max="100" name="bottom" id="bottom" class="form-control" value="<?php echo $this->d_bt; ?>">
-					</div>
+					<label for="bottom">Bottom: </label>
+					<input type="number" min="1" max="100" name="bottom" id="bottom" value="<?php echo $this->d_bt; ?>">
 				</div>
 				<div class="form-group">
-					<label for="right" class="col-sm-5 control-label">Right: </label>
-					<div class="col-sm-5">
-						<input type="number" min="1" max="100" name="right" id="right" class="form-control" value="<?php echo $this->d_rt; ?>">
-					</div>
+					<label for="right">Right: </label>
+					<input type="number" min="1" max="100" name="right" id="right" value="<?php echo $this->d_rt; ?>">
 				</div>
 				<div class="form-group">
-					<div class="col-sm-5 col-sm-offset-5">
-						<input type="submit" name="gp_bttb_up" value="Submit" class="form-control btn btn-primary">
-					</div>
+					<input type="submit" name="gp_bttb_up" value="Submit">
 				</div>
 			</form>
 			<p>
-				<div class="gp-back-to-top" id="gpToTop">
-					<span class="glyphicon glyphicon-chevron-up"></span>
-				</div>
+				<div class="gp-back-to-top" id="gpToTop"><span></span></div>
 			</p>
 			<script type="text/javascript">
 				(function ($) {
@@ -157,8 +136,8 @@ class GP_Back_To_Top
 							right = $('.gpbttb-form').find('#right');
 
 						function updateStyle() {
-							width.val(demo.outerWidth());
-							height.val(demo.outerHeight());
+							width.val( demo.css('width').replace("px", '') );
+							height.val( demo.css('height').replace("px", '') );
 							font.val( demo.css('font-size').replace("px", '') );
 							bg_color.val( rgb2hex(demo.css('background-color')) );
 							color.val( rgb2hex(demo.css('color')) );
@@ -185,6 +164,7 @@ class GP_Back_To_Top
 					 *
 					 * @author Giang Peter
 					 */
+					@import url(\"font.css\");
 					.gp-back-to-top {
 						display: none;
 						width: ".$width."px;
@@ -200,6 +180,9 @@ class GP_Back_To_Top
 						right: ".$right."px;
 						font-size: ".$font."px;
 						cursor: pointer;
+						-webkit-box-sizing: content-box;
+					    -moz-box-sizing: content-box;
+					    box-sizing: content-box;
 					}
 					.gp-back-to-top span {
 						position: absolute;
@@ -209,13 +192,22 @@ class GP_Back_To_Top
 						-ms-transform: translateX(-50%);
 						-o-transform: translateX(-50%);
 						transform: translateX(-50%);
+						font-family: 'Glyphicons Halflings';
+					    line-height: 1;
+					    -webkit-font-smoothing: antialiased;
+					    -moz-osx-font-smoothing: grayscale;
+					}
+					.gp-back-to-top span:before {
+					    content: '\\e113';
 					}";
 
-			$file = fopen( dirname(__FILE__) . '\css\/'.$this->fr_file.'.css', 'w') or die('File not found.');
+			$file_fo = dirname(__FILE__) . '/css/'.$this->fr_file.'.css';
+			$file = fopen($file_fo, 'w') or die('File not found.');
 			fwrite($file, $txt);
 			fclose($file);
 
-			$file_ad = fopen( dirname(__FILE__) . '\css\/'.$this->ad_file.'.css', 'w') or die('File not found.');
+			$file_bo = dirname(__FILE__) . '/css/'.$this->ad_file.'.css';
+			$file_ad = fopen($file_bo, 'w') or die('File not found.');
 			fwrite($file_ad, $txt);
 			fclose($file_ad);
 			?>

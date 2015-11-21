@@ -1,9 +1,9 @@
 === GP Back To Top ===
 Contributors: Giang Peter
-Donate link: http://timphongkham.org/
+Donate link: http://github.com/giangmd
 Tags: create back to top button, back to top plugin, back to top.
-Requires at least: 1.0
-Tested up to: 1.0
+Requires at least: 3.2
+Tested up to: 4.3
 Stable tag: 1.0
 License: GPL2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

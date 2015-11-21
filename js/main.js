@@ -49,5 +49,15 @@
 			var value = $(this).val();
 			demo.css({'color': value});
 		});
+
+		bottom.on('change', function() {
+			var value = $(this).val();
+			demo.css({'bottom': value+'px'});
+		});
+
+		right.on('change', function() {
+			var value = $(this).val();
+			demo.css({'right': value+'px'});
+		});
 	});
 })(jQuery);

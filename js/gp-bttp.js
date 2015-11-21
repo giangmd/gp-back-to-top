@@ -12,7 +12,7 @@
 
 (function ($) {
 	$(document).ready(function() {
-		var element = '<div class="gp-back-to-top" id="gpToTop"><span class="glyphicon glyphicon-chevron-up"></span></div>';
+		var element = '<div class="gp-back-to-top" id="gpToTop"><span></span></div>';
 		$('body').append(element);
 
 		var toTop = $('#gpToTop');
